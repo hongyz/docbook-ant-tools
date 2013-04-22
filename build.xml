@@ -293,7 +293,7 @@
 		</copy>
 	</target>
 
-	<target name="build" depends="build-chunk, build-pdf, build-epub, build-webhelp" description="Generates All files from DocBook XML" />
+	<target name="build" depends="build-html, build-chunk, build-pdf, build-epub, build-webhelp" description="Generates All files from DocBook XML" />
 	<target name="build-dist">
 		<zip destfile="docbook-ant-tools-${dist.version}.zip">
 			<zipfileset dir="${basedir}" prefix="docbook-ant-tools">
