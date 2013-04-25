@@ -214,7 +214,7 @@
 		<replace dir="${out.dir}/fo/resources/images" encoding="UTF-8">
 			<include name="**/*.svg"/>
 			<replacetoken><![CDATA[font-family="Heiti SC"]]></replacetoken>
-			<replacevalue><![CDATA[font-family="FZLanTingHei-R-GBK"]]></replacevalue>
+			<replacevalue><![CDATA[font-family="STHeiti"]]></replacevalue>
 		</replace>
 	</target>
 
