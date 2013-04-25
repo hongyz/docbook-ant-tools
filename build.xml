@@ -211,6 +211,11 @@
 			<replacetoken><![CDATA[http://xml.apache.org/fop/extensions]]></replacetoken>
 			<replacevalue><![CDATA[http://xmlgraphics.apache.org/fop/extensions]]></replacevalue>
 		</replace>
+		<replace dir="${out.dir}/fo/resources/images" encoding="UTF-8">
+			<include name="**/*.svg"/>
+			<replacetoken><![CDATA[font-family="Heiti SC"]]></replacetoken>
+			<replacevalue><![CDATA[font-family="FZLanTingHei-R-GBK"]]></replacevalue>
+		</replace>
 	</target>
 
 	<target name="build-pdf" depends="build-fo, download-font-package" description="Generates PDF files from DocBook XML">
