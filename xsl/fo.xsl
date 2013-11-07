@@ -38,7 +38,7 @@
 	<xsl:param name="monospace.font.family">'DroidSansMono','FZLanTingKanHei-R-GBK'</xsl:param>
 	<xsl:param name="sans.font.family">'Myriad Pro','FZLanTingKanHei-R-GBK'</xsl:param>
 
-	<xsl:param name="line-height">1.8em</xsl:param>
+	<xsl:param name="line-height">1.5em</xsl:param>
 
 	<!-- 
 	<xsl:param name="generate.toc">
