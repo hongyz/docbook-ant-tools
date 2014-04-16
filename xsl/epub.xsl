@@ -8,6 +8,7 @@
 	
 	<xsl:param name="callout.graphics" select="0" />
 	<xsl:param name="admon.graphics" select="0" />
+	<xsl:param name="admon.style" select="0" />
 	
 	<xsl:param name="ignore.image.scaling" select="1" />
 	
