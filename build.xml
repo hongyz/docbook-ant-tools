@@ -7,8 +7,7 @@
 	<property name="doc.dir" value="${help.dir}" />
 	<property name="doc.main" value="${doc.dir}/main.xml" />
 	<property name="res.dir" value="${basedir}/res" />
-	<!-- http://goo.gl/x9WmJ http://goo.gl/2wjOC -->
-	<property name="font.package.url" value="http://goo.gl/QwsNxt" />
+	<property name="font.package.url" value="http://t.cn/Rv0vaSU" />
 	<property name="epub.ch1.font" value="STHeiti" />
 	<property name="out.dir" value="${basedir}/out" />
 	<property name="out.filename" value="index" />
