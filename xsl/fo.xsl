@@ -31,21 +31,16 @@
 	<!-- 
 	<xsl:param name="body.font.family">'Myriad Pro','FZLanTingKanHei-R-GBK'</xsl:param>
 	 -->
-	<xsl:param name="body.font.family">'FZLanTingKanHei-R-GBK'</xsl:param>
-	<xsl:param name="body.font.master">10.5</xsl:param>
+	<!-- <xsl:param name="body.font.family">'Helvetica'</xsl:param> -->
+	<xsl:param name="body.font.family">'Myriad Pro', 'MicrosoftYaHei'</xsl:param>
+	<xsl:param name="body.font.master">10</xsl:param>
 	<xsl:param name="title.font.family">'Myriad Pro','FZLTHK--GBK1-0'</xsl:param>
 	<xsl:param name="dingbat.font.family">'Myriad Pro','FZLanTingKanHei-R-GBK'</xsl:param>
 	<xsl:param name="monospace.font.family">'DroidSansMono','FZLanTingKanHei-R-GBK'</xsl:param>
 	<xsl:param name="sans.font.family">'Myriad Pro','FZLanTingKanHei-R-GBK'</xsl:param>
 
 	<xsl:param name="line-height">1.5em</xsl:param>
-
-	<!-- 
-	<xsl:param name="generate.toc">
-		book toc,title
-	</xsl:param>
-	 -->
-	 
+	
 	<xsl:param name="body.start.indent">0pt</xsl:param>
 
 	<xsl:param name="draft.mode">no</xsl:param>
@@ -179,10 +174,32 @@
 
 	<xsl:attribute-set name="normal.para.spacing">
 		<xsl:attribute name="text-indent">0em</xsl:attribute>
-		<xsl:attribute name="space-before.optimum">1em</xsl:attribute>
-		<xsl:attribute name="space-before.minimum">1em</xsl:attribute>
-		<xsl:attribute name="space-before.maximum">1em</xsl:attribute>
+		<xsl:attribute name="space-before.optimum">0.5em</xsl:attribute>
+		<xsl:attribute name="space-before.minimum">0.5em</xsl:attribute>
+		<xsl:attribute name="space-before.maximum">0.5em</xsl:attribute>
 	</xsl:attribute-set>
+	
+	<xsl:attribute-set name="list.item.spacing">
+		<xsl:attribute name="space-before.optimum">1em</xsl:attribute>
+		<xsl:attribute name="space-before.minimum">0.8em</xsl:attribute>
+		<xsl:attribute name="space-before.maximum">1.2em</xsl:attribute>
+	</xsl:attribute-set>
+
+	<xsl:template name="table.cell.properties">
+		<xsl:choose>
+			<xsl:when test="ancestor::thead">
+				<xsl:attribute name="background-color">#e0e0e0</xsl:attribute>
+			</xsl:when>
+		</xsl:choose>
+		<xsl:attribute name="border">0.5pt solid black</xsl:attribute>
+	</xsl:template>
+
+	<xsl:template name="table.cell.block.properties">
+		<!-- highlight text in table head -->
+		<xsl:if test="ancestor::thead">
+			<xsl:attribute name="font-weight">bold</xsl:attribute>
+		</xsl:if>
+	</xsl:template>
 
 	<xsl:template match="emphasis[@role='red']">
 		<fo:inline color="#FF0000">
@@ -192,6 +209,19 @@
 	
 	<xsl:template match="processing-instruction('hard-pagebreak')">
 		<fo:block break-after='page'/>
+	</xsl:template>
+
+	<xsl:template name="table.of.contents.titlepage.recto">
+		<fo:block xmlns:fo="http://www.w3.org/1999/XSL/Format"
+			xsl:use-attribute-sets="table.of.contents.titlepage.recto.style"
+			space-before.minimum="1em" space-before.optimum="1.5em"
+			space-before.maximum="2em" space-after="0.5em" margin-left="{$title.margin.left}"
+			start-indent="0pt" font-size="14pt" font-weight="bold" color="#005c9d"
+			font-family="{$title.fontset}">
+			<xsl:call-template name="gentext">
+				<xsl:with-param name="key" select="'TableofContents'" />
+			</xsl:call-template>
+		</fo:block>
 	</xsl:template>
 
 </xsl:stylesheet>

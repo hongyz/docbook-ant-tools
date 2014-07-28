@@ -7,6 +7,7 @@
 	<property name="doc.dir" value="${help.dir}" />
 	<property name="doc.main" value="${doc.dir}/main.xml" />
 	<property name="res.dir" value="${basedir}/res" />
+	<property name="fo.params" value="body.font.family='MicrosoftYaHei' l10n.gentext.language=zh_cn" />
 	<property name="font.package.url" value="http://t.cn/Rv0vaSU" />
 	<property name="epub.ch1.font" value="STHeiti" />
 	<property name="out.dir" value="${basedir}/out" />
@@ -90,8 +91,9 @@
 		<attribute name="in"/>
 		<attribute name="out"/>
 		<attribute name="style"/>
+		<attribute name="extraparams" default="k=v"/>
 		<sequential>
-			<echo>Transform XML from @{in} to @{out} using XSL @{style}.</echo>
+			<echo>Transform XML from @{in} to @{out} using XSL @{style} with extra params: @{extraparams}.</echo>
 			<!--
 			<java classname="org.apache.xalan.xslt.Process" fork="yes">
 				<sysproperty key="org.apache.xerces.xni.parser.XMLParserConfiguration" value="org.apache.xerces.parsers.XIncludeParserConfiguration" />
@@ -117,6 +119,7 @@
 				<arg line=" @{style}"/>
 				<arg line=" use.extensions=1"/>
 				<arg line=" textinsert.extension=1" />
+				<arg line=" @{extraparams}" />
 				<classpath>
 					<path refid="saxon.lib.classpath"/>
 				</classpath>
@@ -206,11 +209,17 @@
 		<copy-res dest="fo" />
 		<copy-admonitions dest="fo"/>
 		<copy-callouts dest="fo"/>
-		<xsl-proc in="${doc.main}" style="${xsl.dir}/fo.xsl" out="${out.dir}/fo/index.fo.xml" />
+		<xsl-proc in="${doc.main}" style="${xsl.dir}/fo.xsl" out="${out.dir}/fo/index.fo.xml" extraparams="${fo.params}"/>
 		<replace file="${out.dir}/fo/index.fo.xml" encoding="UTF-8">
 			<replacetoken><![CDATA[http://xml.apache.org/fop/extensions]]></replacetoken>
 			<replacevalue><![CDATA[http://xmlgraphics.apache.org/fop/extensions]]></replacevalue>
 		</replace>
+		<!--
+		<replace file="${out.dir}/fo/index.fo.xml" encoding="UTF-8">
+			<replacetoken><![CDATA[@2x.png]]></replacetoken>
+			<replacevalue><![CDATA[.svg]]></replacevalue>
+		</replace>
+		-->
 		<replace dir="${out.dir}/fo/resources/images" encoding="UTF-8">
 			<include name="**/*.svg"/>
 			<replacetoken><![CDATA[font-family="Heiti SC"]]></replacetoken>

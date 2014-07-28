@@ -3,4 +3,4 @@ build.properties
 .DS_Store
 res/fop/fonts/
 fonts.zip
-
+doc*/

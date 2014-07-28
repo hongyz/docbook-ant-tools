@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 	xmlns:fo="http://www.w3.org/1999/XSL/Format" version='1.0'>
 	
-	<xsl:param name="l10n.gentext.language" select="'zh_CN'" />
+	<xsl:param name="l10n.gentext.language" select="'zh_cn'" />
 	<xsl:param name="callout.graphics.path">resources/callouts/</xsl:param>
 	<xsl:param name="admon.graphics.path">resources/admonitions/</xsl:param>
 	
@@ -19,15 +19,19 @@
 	</xsl:param>
 	
 	<xsl:param name="generate.toc">
-		appendix toc,
-		title article/appendix nop article toc,
-		title book toc,
-		title chapter toc,
-		title part toc,
-		title preface toc,
-		title qandadiv toc qandaset toc reference toc,
-		title sect1 toc sect2 toc sect3 toc sect4 toc sect5 toc section toc set toc,
-		title
+		appendix nop
+		article toc,title
+		book toc,title,figure,table,example,equation
+		chapter toc
+		part nop
+		preface nop
+		qandadiv nop
+		qandaset nop
+		reference toc,title
+		section nop
+		set toc
 	</xsl:param>
+	
+	<xsl:param name="autotoc.label.separator" select="' '"/>
 	
 </xsl:stylesheet>
