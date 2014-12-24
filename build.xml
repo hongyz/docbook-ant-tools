@@ -214,10 +214,14 @@
 			<replacetoken><![CDATA[http://xml.apache.org/fop/extensions]]></replacetoken>
 			<replacevalue><![CDATA[http://xmlgraphics.apache.org/fop/extensions]]></replacevalue>
 		</replace>
-		<!--
 		<replace file="${out.dir}/fo/index.fo.xml" encoding="UTF-8">
-			<replacetoken><![CDATA[@2x.png]]></replacetoken>
-			<replacevalue><![CDATA[.svg]]></replacevalue>
+			<replacetoken><![CDATA[.svg]]></replacetoken>
+			<replacevalue><![CDATA[@2x.png]]></replacevalue>
+		</replace>
+		<!--
+		<replace>
+			<replacetoken><![CDATA[.svg]]></replacetoken>
+			<replacevalue><![CDATA[<imagedata contentdepth="100%" width="100%" scalefit="1"]]></replacevalue>
 		</replace>
 		-->
 		<replace dir="${out.dir}/fo/resources/images" encoding="UTF-8">

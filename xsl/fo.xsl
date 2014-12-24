@@ -19,6 +19,7 @@
 	</xsl:template>
 	
 	<xsl:param name="fop1.extensions" select="1" />
+	<xsl:param name="xep.extensions" select="0" />
 	
 	<xsl:param name="ulink.footnotes" select="0" />
 	<xsl:param name="ulink.show" select="0" />
@@ -32,7 +33,7 @@
 	<xsl:param name="body.font.family">'Myriad Pro','FZLanTingKanHei-R-GBK'</xsl:param>
 	 -->
 	<!-- <xsl:param name="body.font.family">'Helvetica'</xsl:param> -->
-	<xsl:param name="body.font.family">'Myriad Pro', 'MicrosoftYaHei'</xsl:param>
+	<xsl:param name="body.font.family">'Myriad Pro','HiraginoSansGB'</xsl:param>
 	<xsl:param name="body.font.master">10</xsl:param>
 	<xsl:param name="title.font.family">'Myriad Pro','FZLTHK--GBK1-0'</xsl:param>
 	<xsl:param name="dingbat.font.family">'Myriad Pro','FZLanTingKanHei-R-GBK'</xsl:param>
@@ -179,10 +180,8 @@
 		<xsl:attribute name="space-before.maximum">0.5em</xsl:attribute>
 	</xsl:attribute-set>
 	
-	<xsl:attribute-set name="list.item.spacing">
-		<xsl:attribute name="space-before.optimum">1em</xsl:attribute>
-		<xsl:attribute name="space-before.minimum">0.8em</xsl:attribute>
-		<xsl:attribute name="space-before.maximum">1.2em</xsl:attribute>
+	<xsl:attribute-set name="list.block.properties">
+		<xsl:attribute name="margin-left">2em</xsl:attribute>
 	</xsl:attribute-set>
 
 	<xsl:template name="table.cell.properties">
@@ -199,6 +198,7 @@
 		<xsl:if test="ancestor::thead">
 			<xsl:attribute name="font-weight">bold</xsl:attribute>
 		</xsl:if>
+		<xsl:attribute name="font-size">8pt</xsl:attribute>
 	</xsl:template>
 
 	<xsl:template match="emphasis[@role='red']">
